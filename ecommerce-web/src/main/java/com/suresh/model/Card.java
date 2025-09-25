@@ -11,11 +11,12 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
+
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne
     private User user;
     @OneToMany(mappedBy = "card",cascade = CascadeType.ALL,orphanRemoval = true)
     private Set<CardItem> cardItem = new HashSet<>();

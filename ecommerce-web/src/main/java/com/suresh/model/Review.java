@@ -27,10 +27,9 @@ public class Review {
     private List<String> productImage;
     @ManyToOne
     @JsonIgnore
-    @Column(nullable = false)
     private Product product;
     @ManyToOne
-    @Column(nullable = false)
+
     private User user;
     @Column(nullable = false)
     private LocalDateTime createAt = LocalDateTime.now();

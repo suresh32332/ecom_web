@@ -1,4 +1,4 @@
-package com.suresh.HomeController.response;
+package com.suresh.response;
 
 
 import lombok.Data;

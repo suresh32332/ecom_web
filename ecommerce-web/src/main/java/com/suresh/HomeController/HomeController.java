@@ -1,6 +1,6 @@
 package com.suresh.HomeController;
 
-import com.suresh.HomeController.response.ApiResponse;
+import com.suresh.response.ApiResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

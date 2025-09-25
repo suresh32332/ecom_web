@@ -5,22 +5,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class CardItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToMany
-    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "card_id")
     private Card card;
+    @ManyToOne
     private Product product;
     private String size;
     private int quantity=1;

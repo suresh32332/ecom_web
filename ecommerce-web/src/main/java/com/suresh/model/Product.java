@@ -4,7 +4,6 @@ package com.suresh.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +22,7 @@ public class Product {
     private String description;
     private int sellingPrice;
     private int discountPercent;
-    private int Quantuty;
+    private int Quantity;
     @ManyToOne
     private Category category;
     private String numRatings;

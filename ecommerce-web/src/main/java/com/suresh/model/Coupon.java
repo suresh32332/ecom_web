@@ -23,6 +23,6 @@ public class Coupon {
     private LocalDate validityEndDate;
     private double minimumOrderValue;
     private boolean isActive =true;
-   @ManyToMany(mappedBy = "userCoupons")
+   @ManyToMany(mappedBy = "coupon")
    private Set<User> userByUser = new HashSet<>();
 }
