@@ -1,4 +1,7 @@
 package com.suresh.service;
 
-public class AuthService {
+import com.suresh.response.SignupRequest;
+
+public interface AuthService {
+    String createUser(SignupRequest request);
 }
