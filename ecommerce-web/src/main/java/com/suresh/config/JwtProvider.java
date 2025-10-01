@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.util.Collection;
@@ -12,8 +13,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@Component
 public class JwtProvider {
-
     SecretKey key = Keys.hmacShaKeyFor(JWT_CONSTANT.SECKET_KEY.getBytes());
         public String generateToken(Authentication auth) {
             Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
@@ -27,6 +28,7 @@ public class JwtProvider {
                     .compact();
 
         }
+
         public String getEmailFromJwtToken(String jwt){
             jwt =jwt.substring(7);
             SecretKey key = Keys.hmacShaKeyFor(JWT_CONSTANT.SECKET_KEY.getBytes());
@@ -35,6 +37,7 @@ public class JwtProvider {
             String email =String.valueOf(claims.get("email"));
             return email;
         }
+
 
     private String popularAuthorities(Collection<? extends GrantedAuthority> authorities) {
            Set<String> auth = new HashSet<>();

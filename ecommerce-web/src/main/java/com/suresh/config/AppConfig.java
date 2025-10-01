@@ -25,7 +25,7 @@ public class AppConfig {
         http.sessionManagement(mangement -> mangement.sessionCreationPolicy(
                         SessionCreationPolicy.STATELESS
                 )).authorizeHttpRequests(authorze -> authorze.requestMatchers(
-                                "/api/**"
+                                "/api/**,/auth/signup", "/auth/login"
                         ).authenticated().requestMatchers("/api/product/*/review").permitAll()
                         .anyRequest().permitAll())
                 .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
@@ -35,7 +35,7 @@ public class AppConfig {
     }
 
     @Bean
-    private CorsConfigurationSource corsConfigurationSource() {
+    public CorsConfigurationSource corsConfigurationSource() {
         return new CorsConfigurationSource() {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
