@@ -1,7 +1,6 @@
 package com.suresh.HomeController;
 
 import com.suresh.domain.USER_ROLE;
-import com.suresh.model.User;
 import com.suresh.repository.UserRepository;
 import com.suresh.response.AuthResponse;
 import com.suresh.response.SignupRequest;
@@ -15,11 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
+
 public class AuthController {
 
     @Autowired
-    private UserRepository userRepository;
-    private AuthService authService;
+    private  UserRepository userRepository;
+    private  AuthService authService;
+
+    public AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse> createUserHandler(@RequestBody SignupRequest req){

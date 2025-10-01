@@ -15,7 +15,7 @@ import java.util.Set;
 
 @Component
 public class JwtProvider {
-    SecretKey key = Keys.hmacShaKeyFor(JWT_CONSTANT.SECKET_KEY.getBytes());
+    SecretKey key = Keys.hmacShaKeyFor(JWT_CONSTANT.SECRET_KEY.getBytes());
         public String generateToken(Authentication auth) {
             Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
             String role = popularAuthorities(authorities);
@@ -31,7 +31,7 @@ public class JwtProvider {
 
         public String getEmailFromJwtToken(String jwt){
             jwt =jwt.substring(7);
-            SecretKey key = Keys.hmacShaKeyFor(JWT_CONSTANT.SECKET_KEY.getBytes());
+            SecretKey key = Keys.hmacShaKeyFor(JWT_CONSTANT.SECRET_KEY.getBytes());
             Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
 
             String email =String.valueOf(claims.get("email"));
